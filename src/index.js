@@ -18,7 +18,7 @@ function Tweet({tweet}) {
         <Message text={tweet.message}/>
         <div className="buttons">
          <ReplyButton/>
-         <RetweetButton retweets={tweet.retweets}/>
+         <RetweetButton count={tweet.retweets}/>
          <LikeButton likes={tweet.likes}/>
          <MoreOptionsButton/>
         </div>
@@ -50,20 +50,31 @@ return(
 <span className="time">{timeString}</span>
 );
 }
+
+function getRetweetCount(count){
+  if(count>0){
+    return( <span className="retweet-count">
+    {count}
+    </span>
+    );
+  } else{
+    return null;
+  }
+}
 const ReplyButton=()=><i className="fa fa-reply reply-button"/>
-const RetweetButton=({retweets})=><div><i className="fa fa-retweet retweet-button"/>{retweets}</div>
+const RetweetButton=({count})=><span className="retweet-button"><i className="fa fa-retweet"/>{getRetweetCount(count)}</span>
 const LikeButton=({likes})=><div><i className="fa fa-heart like-button"/>{likes}</div>
 const MoreOptionsButton=()=><i className="fa fa-ellipsis-h more-options-button"/>
 
 var testTweet={
-  message: "Hey Akshu",
+  message: "Hey Akshu good girl!!",
   gravatar:"https://www.w3schools.com/howto/img_avatar2.png",
   author:{
     handle:"Akshata",
-    name:"@kshu"
+    name:"I a'm Akshi"
   },
   likes:3,
-  retweets:0,
+  retweets:5,
   timestamp:"2019-03-08 17:41:12"
 }
 
